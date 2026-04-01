@@ -1,0 +1,333 @@
+/* ============================================================
+   Tailwind CSS v3 directives
+   ============================================================ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   CSS Custom Properties — White + Orange palette (modern light)
+   ============================================================ */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #fafafa;
+  --bg-warm: #fff8f3;
+  --bg-card: rgba(255, 255, 255, 0.8);
+  --accent-orange: #F97316;
+  --accent-orange-dark: #ea580c;
+  --accent-orange-light: #fdba74;
+  --accent-warm: #fff7ed;
+  --accent-deep: #c2410c;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --glass-border: rgba(249, 115, 22, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glow-orange: 0 0 60px rgba(249, 115, 22, 0.12);
+}
+
+/* ============================================================
+   Base reset
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   Custom scrollbar (orange accent)
+   ============================================================ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f5f5f5; }
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--accent-orange), var(--accent-orange-light));
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--accent-orange-dark), var(--accent-orange));
+}
+
+/* ============================================================
+   Focus
+   ============================================================ */
+:focus-visible {
+  outline: 2px solid var(--accent-orange);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   Custom cursor
+   ============================================================ */
+.custom-cursor-enabled,
+.custom-cursor-enabled * {
+  cursor: none !important;
+}
+
+/* ============================================================
+   Preloader spinner ring
+   ============================================================ */
+@keyframes preloader-spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.preloader-ring {
+  animation: preloader-spin 1.2s linear infinite;
+}
+
+/* ============================================================
+   Marquee
+   ============================================================ */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ============================================================
+   Glassmorphism card — light theme
+   ============================================================ */
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(249, 115, 22, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(249, 115, 22, 0.25);
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 40px rgba(249, 115, 22, 0.08),
+    0 0 30px rgba(249, 115, 22, 0.05);
+}
+
+/* Glass card color variant */
+.glass-card-orange,
+.glass-card-purple,
+.glass-card-blue,
+.glass-card-teal,
+.glass-card-pink {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(249, 115, 22, 0.08);
+}
+
+.glass-card-orange:hover,
+.glass-card-purple:hover,
+.glass-card-blue:hover,
+.glass-card-teal:hover,
+.glass-card-pink:hover {
+  box-shadow: 0 20px 40px rgba(249, 115, 22, 0.1), 0 0 40px rgba(249, 115, 22, 0.06);
+  border-color: rgba(249, 115, 22, 0.3);
+}
+
+/* ============================================================
+   Decorative gradient orbs — soft warm glows
+   ============================================================ */
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+.gradient-orb-orange {
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.25) 0%, transparent 70%);
+}
+
+.gradient-orb-purple {
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.15) 0%, transparent 70%);
+}
+
+.gradient-orb-blue {
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, transparent 70%);
+}
+
+.gradient-orb-teal {
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.15) 0%, transparent 70%);
+}
+
+.gradient-orb-pink {
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, transparent 70%);
+}
+
+/* ============================================================
+   Card hover lift
+   ============================================================ */
+.card-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(249, 115, 22, 0.1), 0 8px 16px rgba(0, 0, 0, 0.04);
+}
+
+/* ============================================================
+   Shine hover effect (card shimmer)
+   ============================================================ */
+.shine-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(249, 115, 22, 0.06) 45%,
+    rgba(249, 115, 22, 0.12) 50%,
+    rgba(249, 115, 22, 0.06) 55%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.shine-hover:hover::after {
+  transform: translateX(100%);
+}
+
+/* ============================================================
+   Gradient text utilities
+   ============================================================ */
+.gradient-text {
+  background: linear-gradient(135deg, #F97316 0%, #ea580c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-purple {
+  background: linear-gradient(135deg, #F97316 0%, #c2410c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-multi {
+  background: linear-gradient(135deg, #F97316 0%, #ea580c 50%, #c2410c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-blue {
+  background: linear-gradient(135deg, #F97316 0%, #fb923c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ============================================================
+   Animated gradient border
+   ============================================================ */
+@keyframes gradient-rotate {
+  0%   { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(var(--angle, 0deg), #F97316, #fb923c, #fdba74, #F97316);
+  animation: gradient-rotate 6s linear infinite;
+}
+
+.gradient-border > * {
+  border-radius: 15px;
+}
+
+/* ============================================================
+   Colorful accent line
+   ============================================================ */
+.accent-line {
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #F97316, #fb923c, #fdba74);
+}
+
+/* ============================================================
+   Pulse glow animation
+   ============================================================ */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50%      { opacity: 0.35; transform: scale(1.05); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* ============================================================
+   Counter tabular nums
+   ============================================================ */
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* ============================================================
+   FAQ content clip
+   ============================================================ */
+.faq-content {
+  overflow: hidden;
+  height: 0;
+}
+
+/* ============================================================
+   Light-theme section helpers
+   ============================================================ */
+.section-light {
+  background: #ffffff;
+}
+
+.section-warm {
+  background: linear-gradient(180deg, #ffffff 0%, #fff8f3 50%, #ffffff 100%);
+}
+
+.section-warm-alt {
+  background: linear-gradient(180deg, #fff8f3 0%, #ffffff 50%, #fff8f3 100%);
+}
