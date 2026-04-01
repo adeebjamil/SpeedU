@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
@@ -15,7 +15,9 @@ import {
   Bell,
   Search,
   Menu,
-  X
+  X,
+  ChevronRight,
+  Sparkles,
 } from "lucide-react";
 import clsx from "clsx";
 
@@ -37,19 +39,163 @@ export default function AdminLayout({
   const pathname = usePathname();
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [currentTime, setCurrentTime] = useState("");
+
+  useEffect(() => {
+    const update = () => {
+      const now = new Date();
+      setCurrentTime(
+        now.toLocaleTimeString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: true,
+        })
+      );
+    };
+    update();
+    const interval = setInterval(update, 60000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleLogout = () => {
-    // Implement supabase sign out here
     router.push("/login");
   };
 
   return (
-    <div className="h-screen bg-slate-50 flex overflow-hidden">
+    <div className="h-screen flex overflow-hidden admin-shell">
+      {/* Admin-specific styles */}
+      <style jsx global>{`
+        .admin-shell {
+          background: #05060f;
+          font-family: "Inter", system-ui, -apple-system, sans-serif;
+        }
+
+        /* Sidebar gradient background */
+        .sidebar-bg {
+          background: linear-gradient(
+            195deg,
+            rgba(15, 18, 35, 0.98) 0%,
+            rgba(8, 10, 22, 0.99) 50%,
+            rgba(12, 15, 30, 0.98) 100%
+          );
+          border-right: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        /* Active nav item glow */
+        .nav-active {
+          background: linear-gradient(
+            135deg,
+            rgba(59, 130, 246, 0.15) 0%,
+            rgba(99, 102, 241, 0.1) 100%
+          );
+          border: 1px solid rgba(59, 130, 246, 0.2);
+          box-shadow: 0 0 20px rgba(59, 130, 246, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-active .nav-indicator {
+          opacity: 1;
+          transform: scaleY(1);
+        }
+
+        /* Nav hover */
+        .nav-item:not(.nav-active):hover {
+          background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* Top bar glass */
+        .topbar-glass {
+          background: rgba(8, 10, 22, 0.85);
+          backdrop-filter: blur(20px) saturate(180%);
+          -webkit-backdrop-filter: blur(20px) saturate(180%);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        /* Search input */
+        .search-input {
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .search-input:focus {
+          background: rgba(255, 255, 255, 0.07);
+          border-color: rgba(59, 130, 246, 0.4);
+          box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1),
+            0 0 20px rgba(59, 130, 246, 0.05);
+        }
+
+        /* Notification badge pulse */
+        @keyframes badge-pulse {
+          0%,
+          100% {
+            box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
+          }
+          50% {
+            box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+          }
+        }
+        .badge-pulse {
+          animation: badge-pulse 2s ease-in-out infinite;
+        }
+
+        /* Sidebar logo shimmer */
+        @keyframes logo-shimmer {
+          0% {
+            background-position: -200% center;
+          }
+          100% {
+            background-position: 200% center;
+          }
+        }
+        .logo-shimmer {
+          background: linear-gradient(
+            90deg,
+            #3b82f6 0%,
+            #818cf8 25%,
+            #e0e7ff 50%,
+            #818cf8 75%,
+            #3b82f6 100%
+          );
+          background-size: 200% auto;
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: logo-shimmer 4s linear infinite;
+        }
+
+        /* Page content area */
+        .content-area {
+          background: linear-gradient(
+            180deg,
+            #070a14 0%,
+            #0a0d1a 40%,
+            #080b17 100%
+          );
+        }
+
+        /* Scrollbar for sidebar */
+        .sidebar-scroll::-webkit-scrollbar {
+          width: 3px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .sidebar-scroll::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.08);
+          border-radius: 10px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-thumb:hover {
+          background: rgba(255, 255, 255, 0.15);
+        }
+      `}</style>
+
       {/* Mobile sidebar overlay */}
       <div
         className={clsx(
-          "fixed inset-0 bg-slate-900/50 z-40 lg:hidden transition-opacity",
-          sidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          "fixed inset-0 z-40 lg:hidden transition-all duration-300",
+          sidebarOpen
+            ? "opacity-100 backdrop-blur-sm bg-black/60"
+            : "opacity-0 pointer-events-none"
         )}
         onClick={() => setSidebarOpen(false)}
       />
@@ -57,58 +203,123 @@ export default function AdminLayout({
       {/* Sidebar */}
       <aside
         className={clsx(
-          "fixed lg:static inset-y-0 left-0 z-50 w-72 bg-white border-r border-slate-200 flex flex-col transition-transform duration-300 ease-in-out lg:transform-none",
+          "fixed lg:static inset-y-0 left-0 z-50 w-[280px] sidebar-bg flex flex-col transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] lg:transform-none",
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
-        <div className="h-16 flex items-center px-6 border-b border-slate-200">
-          <div className="flex items-center gap-3 text-blue-600">
-            <PlaneTakeoff className="h-7 w-7" />
-            <span className="text-xl font-bold tracking-tight text-slate-900">
-              SpeedUp Admin
-            </span>
+        {/* Logo */}
+        <div className="h-[72px] flex items-center px-6 relative">
+          <div className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+              <PlaneTakeoff className="h-5 w-5 text-white" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[17px] font-bold tracking-tight logo-shimmer">
+                SpeedUp
+              </span>
+              <span className="text-[10px] font-medium text-slate-500 uppercase tracking-[0.2em]">
+                Admin Console
+              </span>
+            </div>
           </div>
           <button
             onClick={() => setSidebarOpen(false)}
-            className="ml-auto lg:hidden text-slate-500 hover:text-slate-700"
+            className="ml-auto lg:hidden text-slate-500 hover:text-white transition-colors p-1"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto py-6 px-4 flex flex-col gap-1">
+        {/* Quick Status */}
+        <div className="mx-4 mb-2 px-4 py-3 rounded-xl bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/10">
+          <div className="flex items-center gap-2 mb-1">
+            <Sparkles className="h-3 w-3 text-blue-400" />
+            <span className="text-[10px] font-bold text-blue-400/80 uppercase tracking-widest">
+              System Status
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+            </span>
+            <span className="text-xs font-medium text-emerald-400">
+              All Systems Operational
+            </span>
+          </div>
+        </div>
+
+        {/* Navigation */}
+        <nav className="flex-1 overflow-y-auto py-4 px-3 flex flex-col gap-1 sidebar-scroll">
+          <p className="px-3 mb-2 text-[10px] font-bold text-slate-600 uppercase tracking-[0.2em]">
+            Navigation
+          </p>
           {navigation.map((item) => {
             const isActive = pathname.startsWith(item.href);
             return (
               <Link
                 key={item.name}
                 href={item.href}
+                onClick={() => setSidebarOpen(false)}
                 className={clsx(
-                  "flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors",
-                  isActive
-                    ? "bg-blue-50 text-blue-700"
-                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                  "nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 relative group",
+                  isActive ? "nav-active text-blue-300" : "text-slate-400"
                 )}
               >
-                <item.icon
+                {/* Active indicator bar */}
+                <div className="nav-indicator absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 bg-gradient-to-b from-blue-400 to-indigo-500 rounded-r-full opacity-0 scale-y-0 transition-all duration-300" />
+
+                <div
                   className={clsx(
-                    "h-5 w-5",
-                    isActive ? "text-blue-700" : "text-slate-400"
+                    "h-9 w-9 flex items-center justify-center rounded-lg transition-all duration-200 shrink-0",
+                    isActive
+                      ? "bg-blue-500/20 text-blue-400"
+                      : "bg-white/[0.03] text-slate-500 group-hover:bg-white/[0.06] group-hover:text-slate-300"
                   )}
-                />
-                {item.name}
+                >
+                  <item.icon className="h-[18px] w-[18px]" />
+                </div>
+                <span
+                  className={clsx(
+                    "transition-colors duration-200",
+                    !isActive && "group-hover:text-slate-200"
+                  )}
+                >
+                  {item.name}
+                </span>
+                {isActive && (
+                  <ChevronRight className="h-3.5 w-3.5 ml-auto text-blue-400/60" />
+                )}
               </Link>
             );
           })}
-        </div>
+        </nav>
 
-        <div className="p-4 border-t border-slate-200">
+        {/* Bottom section */}
+        <div className="p-3 border-t border-white/[0.04]">
+          {/* User card */}
+          <div className="flex items-center gap-3 px-3 py-3 mb-2 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+            <div className="h-9 w-9 rounded-lg bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center text-[11px] font-bold text-white shadow-inner">
+              AD
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[13px] font-semibold text-slate-200 truncate">
+                Admin User
+              </p>
+              <p className="text-[10px] text-slate-500 truncate">
+                admin@speedup.in
+              </p>
+            </div>
+          </div>
+
           <button
             onClick={handleLogout}
-            className="flex w-full items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 transition-colors"
+            className="flex w-full items-center gap-3 px-3 py-2.5 rounded-xl text-[13px] font-medium text-red-400/80 hover:bg-red-500/10 hover:text-red-400 transition-all duration-200"
           >
-            <LogOut className="h-5 w-5 text-red-500" />
-            Logout
+            <div className="h-9 w-9 flex items-center justify-center rounded-lg bg-red-500/10">
+              <LogOut className="h-[18px] w-[18px]" />
+            </div>
+            Sign Out
           </button>
         </div>
       </aside>
@@ -116,41 +327,69 @@ export default function AdminLayout({
       {/* Main Content */}
       <main className="flex-1 flex flex-col min-w-0">
         {/* Top Header */}
-        <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 lg:px-8 sticky top-0 z-30">
+        <header className="h-[72px] topbar-glass flex items-center justify-between px-4 lg:px-8 sticky top-0 z-30">
           <button
             onClick={() => setSidebarOpen(true)}
-            className="lg:hidden text-slate-500 hover:text-slate-700"
+            className="lg:hidden text-slate-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5"
           >
-            <Menu className="h-6 w-6" />
+            <Menu className="h-5 w-5" />
           </button>
 
-          <div className="flex-1 max-w-xl hidden sm:flex px-4 lg:px-8">
+          {/* Search bar */}
+          <div className="flex-1 max-w-lg hidden sm:flex px-4">
             <div className="relative w-full">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Search className="h-4 w-4 text-slate-400" />
+              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                <Search className="h-4 w-4 text-slate-500" />
               </div>
               <input
                 type="text"
-                placeholder="Search drones, orders..."
-                className="block w-full pl-10 pr-3 py-2 border border-slate-200 rounded-xl bg-slate-50 text-sm focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 outline-none transition-all"
+                placeholder="Search drones, orders, routes..."
+                className="search-input block w-full pl-10 pr-4 py-2.5 rounded-xl text-[13px] text-slate-300 placeholder:text-slate-600 outline-none"
               />
+              <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <kbd className="px-2 py-0.5 text-[10px] font-medium text-slate-600 bg-white/[0.04] rounded border border-white/[0.06]">
+                  ⌘K
+                </kbd>
+              </div>
             </div>
           </div>
 
-          <div className="flex items-center gap-4 ml-auto">
-            <button className="relative p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors">
-              <Bell className="h-5 w-5" />
-              <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-red-500 border-2 border-white"></span>
-            </button>
-            <div className="h-8 w-8 rounded-full bg-slate-200 border-2 border-slate-300 overflow-hidden flex items-center justify-center">
-              {/* Fallback avatar */}
-              <span className="text-xs font-semibold text-slate-600">AD</span>
+          {/* Right side */}
+          <div className="flex items-center gap-3 ml-auto">
+            {/* Time */}
+            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.04]">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)]" />
+              <span className="text-xs font-medium text-slate-400 tabular">
+                {currentTime}
+              </span>
             </div>
+
+            {/* Notifications */}
+            <button className="relative p-2.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-200">
+              <Bell className="h-[18px] w-[18px]" />
+              <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-red-500 border-[1.5px] border-[#080a16] badge-pulse" />
+            </button>
+
+            {/* Divider */}
+            <div className="hidden md:block w-px h-8 bg-white/[0.06]" />
+
+            {/* Avatar */}
+            <button className="flex items-center gap-3 px-2 py-1.5 rounded-xl hover:bg-white/5 transition-all duration-200">
+              <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-xs font-bold text-white shadow-lg shadow-blue-500/20">
+                AD
+              </div>
+              <div className="hidden md:flex flex-col items-start">
+                <span className="text-[12px] font-semibold text-slate-200">
+                  Admin
+                </span>
+                <span className="text-[10px] text-slate-500">Super Admin</span>
+              </div>
+            </button>
           </div>
         </header>
 
         {/* Page Content */}
-        <div className="flex-1 overflow-auto p-4 lg:p-8">
+        <div className="flex-1 overflow-auto content-area p-4 lg:p-8">
           {children}
         </div>
       </main>
