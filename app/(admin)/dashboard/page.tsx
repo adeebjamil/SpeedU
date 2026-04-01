@@ -54,14 +54,14 @@ export default function DashboardPage() {
         <div className="xl:col-span-2 bg-[#0B1120] rounded-[24px] border border-slate-800 shadow-2xl shadow-blue-900/20 p-1 flex flex-col min-h-[500px] relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay"></div>
           
-          <div className="flex items-center justify-between p-6 pb-4 relative z-10">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-6 pb-4 relative z-10 gap-4 sm:gap-0">
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 bg-blue-500/20 rounded-xl flex items-center justify-center border border-blue-500/30">
+              <div className="h-10 w-10 bg-blue-500/20 rounded-xl flex items-center justify-center border border-blue-500/30 shrink-0">
                 <LocateFixed className="h-5 w-5 text-blue-400" />
               </div>
               <h2 className="text-xl font-bold text-white tracking-wide">Live Airspace</h2>
             </div>
-            <div className="flex gap-3 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+            <div className="flex gap-3 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 whitespace-nowrap self-start sm:self-auto">
               <span className="flex items-center text-xs font-bold text-emerald-400 tracking-wider uppercase">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 mr-2 shadow-[0_0_10px_rgba(52,211,153,0.8)] animate-pulse"></span>
                 Active (12)

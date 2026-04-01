@@ -87,7 +87,7 @@ export default function LoginPage() {
             <Plane className="w-8 h-8" />
           </div>
           
-          <h1 className="text-5xl font-extrabold text-white tracking-tighter leading-tight mb-4">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tighter leading-tight mb-4">
             Autonomous Airspace <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-200">
               Intelligence.
@@ -98,7 +98,7 @@ export default function LoginPage() {
             Secure command and control interface for the SpeedUp drone fleet network. Monitor routing, telemetry, and logistics worldwide.
           </p>
 
-          <div className="grid grid-cols-2 gap-4 max-w-lg">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg">
             <div className="bg-white/5 backdrop-blur-md p-4 rounded-2xl border border-white/5 flex items-start gap-3 hover:bg-white/10 transition-colors cursor-default">
               <Globe className="w-5 h-5 text-sky-400 shrink-0 mt-0.5" />
               <div>
@@ -122,13 +122,13 @@ export default function LoginPage() {
         RIGHT PANE: Authentication Form
         ==============================
       */}
-      <div className="relative flex w-full items-center justify-center p-8 lg:p-12 overflow-hidden">
+      <div className="relative flex w-full items-center justify-center p-6 sm:p-8 lg:p-12 overflow-hidden min-h-[100dvh] lg:min-h-screen">
         {/* Subtle mesh background on dark side */}
         <div className="absolute inset-0 bg-[#030712] -z-10">
           <div className="absolute top-[-50%] right-[-20%] w-[80%] h-[80%] bg-blue-900/10 blur-[120px] rounded-full mix-blend-screen pointer-events-none"></div>
         </div>
 
-        <div className="w-full max-w-[400px] z-10">
+        <div className="w-full max-w-[400px] z-10 w-full sm:mx-auto">
           <div className="text-center lg:text-left mb-10">
             {/* Mobile-only logo */}
             <div className="mx-auto lg:hidden h-14 w-14 bg-blue-600/20 backdrop-blur-xl rounded-2xl flex items-center justify-center mb-6 border border-blue-500/30 text-blue-400 shadow-[0_0_30px_rgba(37,99,235,0.3)]">
