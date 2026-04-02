@@ -70,27 +70,17 @@ export default function AdminLayout({
           font-family: "Inter", system-ui, -apple-system, sans-serif;
         }
 
-        /* Sidebar gradient background */
+        /* Sidebar creamy background */
         .sidebar-bg {
-          background: linear-gradient(
-            195deg,
-            rgba(35, 18, 5, 0.98) 0%,
-            rgba(22, 10, 2, 0.99) 50%,
-            rgba(30, 12, 0, 0.98) 100%
-          );
-          border-right: 1px solid rgba(249, 115, 22, 0.08);
+          background: #fffcf8;
+          border-right: 1px solid rgba(249, 115, 22, 0.1);
         }
 
         /* Active nav item glow */
         .nav-active {
-          background: linear-gradient(
-            135deg,
-            rgba(249, 115, 22, 0.15) 0%,
-            rgba(234, 88, 12, 0.1) 100%
-          );
+          background: rgba(249, 115, 22, 0.08);
           border: 1px solid rgba(249, 115, 22, 0.2);
-          box-shadow: 0 0 20px rgba(249, 115, 22, 0.08),
-            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+          box-shadow: 0 4px 12px rgba(249, 115, 22, 0.05);
         }
 
         .nav-active .nav-indicator {
@@ -100,28 +90,27 @@ export default function AdminLayout({
 
         /* Nav hover */
         .nav-item:not(.nav-active):hover {
-          background: rgba(255, 255, 255, 0.03);
+          background: rgba(249, 115, 22, 0.03);
         }
 
         /* Top bar glass */
         .topbar-glass {
-          background: rgba(22, 10, 2, 0.85);
+          background: rgba(255, 252, 248, 0.85);
           backdrop-filter: blur(20px) saturate(180%);
           -webkit-backdrop-filter: blur(20px) saturate(180%);
-          border-bottom: 1px solid rgba(249, 115, 22, 0.08);
+          border-bottom: 1px solid rgba(249, 115, 22, 0.1);
         }
 
         /* Search input */
         .search-input {
-          background: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(255, 255, 255, 0.06);
+          background: #fff;
+          border: 1px solid rgba(249, 115, 22, 0.15);
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .search-input:focus {
-          background: rgba(255, 255, 255, 0.07);
-          border-color: rgba(249, 115, 22, 0.4);
-          box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1),
-            0 0 20px rgba(249, 115, 22, 0.05);
+          background: #fff;
+          border-color: rgba(249, 115, 22, 0.5);
+          box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
         }
 
         /* Notification badge pulse */
@@ -165,12 +154,7 @@ export default function AdminLayout({
 
         /* Page content area */
         .content-area {
-          background: linear-gradient(
-            180deg,
-            #140a07 0%,
-            #1a0d0a 40%,
-            #170b08 100%
-          );
+          background: #fffcf8;
         }
 
         /* Scrollbar for sidebar */
@@ -181,11 +165,11 @@ export default function AdminLayout({
           background: transparent;
         }
         .sidebar-scroll::-webkit-scrollbar-thumb {
-          background: rgba(255, 255, 255, 0.08);
+          background: rgba(249, 115, 22, 0.2);
           border-radius: 10px;
         }
         .sidebar-scroll::-webkit-scrollbar-thumb:hover {
-          background: rgba(255, 255, 255, 0.15);
+          background: rgba(249, 115, 22, 0.3);
         }
       `}</style>
 
@@ -263,7 +247,7 @@ export default function AdminLayout({
                 onClick={() => setSidebarOpen(false)}
                 className={clsx(
                   "nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 relative group",
-                  isActive ? "nav-active text-orange-400" : "text-slate-400"
+                  isActive ? "nav-active text-orange-600" : "text-slate-600"
                 )}
               >
                 {/* Active indicator bar */}
@@ -273,8 +257,8 @@ export default function AdminLayout({
                   className={clsx(
                     "h-9 w-9 flex items-center justify-center rounded-lg transition-all duration-200 shrink-0",
                     isActive
-                      ? "bg-orange-500/20 text-orange-400"
-                      : "bg-white text-slate-500 group-hover:bg-white/[0.06] group-hover:text-slate-300"
+                      ? "bg-orange-500 text-white shadow-lg shadow-orange-500/20"
+                      : "bg-white border border-slate-100 text-slate-500 group-hover:border-orange-200 group-hover:text-orange-500"
                   )}
                 >
                   <item.icon className="h-[18px] w-[18px]" />
@@ -282,13 +266,13 @@ export default function AdminLayout({
                 <span
                   className={clsx(
                     "transition-colors duration-200",
-                    !isActive && "group-hover:text-slate-200"
+                    !isActive && "group-hover:text-slate-900"
                   )}
                 >
                   {item.name}
                 </span>
                 {isActive && (
-                  <ChevronRight className="h-3.5 w-3.5 ml-auto text-orange-700" />
+                  <ChevronRight className="h-3.5 w-3.5 ml-auto text-orange-600" />
                 )}
               </Link>
             );
@@ -298,12 +282,12 @@ export default function AdminLayout({
         {/* Bottom section */}
         <div className="p-3 border-t border-orange-800/5">
           {/* User card */}
-          <div className="flex items-center gap-3 px-3 py-3 mb-2 rounded-xl bg-white border border-orange-800/5">
-            <div className="h-9 w-9 rounded-lg bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center text-[11px] font-bold text-slate-900 shadow-inner">
+          <div className="flex items-center gap-3 px-3 py-3 mb-2 rounded-xl bg-white border border-orange-800/5 shadow-sm">
+            <div className="h-9 w-9 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-[11px] font-bold text-white shadow-lg shadow-orange-500/20">
               AD
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-[13px] font-semibold text-slate-200 truncate">
+              <p className="text-[13px] font-semibold text-slate-900 truncate">
                 Admin User
               </p>
               <p className="text-[10px] text-slate-500 truncate">
@@ -357,9 +341,9 @@ export default function AdminLayout({
           {/* Right side */}
           <div className="flex items-center gap-3 ml-auto">
             {/* Time */}
-            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-orange-800/5">
-              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)]" />
-              <span className="text-xs font-medium text-slate-400 tabular">
+            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-orange-800/5 shadow-sm">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.4)]" />
+              <span className="text-xs font-medium text-slate-600 tabular">
                 {currentTime}
               </span>
             </div>
@@ -371,7 +355,7 @@ export default function AdminLayout({
             </button>
 
             {/* Divider */}
-            <div className="hidden md:block w-px h-8 bg-white/[0.06]" />
+            <div className="hidden md:block w-px h-8 bg-slate-200" />
 
             {/* Avatar */}
             <button className="flex items-center gap-3 px-2 py-1.5 rounded-xl hover:bg-orange-800/5 transition-all duration-200">
@@ -379,7 +363,7 @@ export default function AdminLayout({
                 AD
               </div>
               <div className="hidden md:flex flex-col items-start">
-                <span className="text-[12px] font-semibold text-slate-200">
+                <span className="text-[12px] font-semibold text-slate-900">
                   Admin
                 </span>
                 <span className="text-[10px] text-slate-500">Super Admin</span>

@@ -59,7 +59,7 @@ function ProgressRing({ percentage, color, size = 48, strokeWidth = 4 }: { perce
   const offset = circumference - (percentage / 100) * circumference;
   return (
     <svg width={size} height={size} className="transform -rotate-90">
-      <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth={strokeWidth} />
+      <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="rgba(0,0,0,0.05)" strokeWidth={strokeWidth} />
       <circle
         cx={size / 2}
         cy={size / 2}
@@ -198,78 +198,53 @@ export default function DashboardPage() {
       <style jsx>{`
         /* Card base */
         .dash-card {
-          background: linear-gradient(
-            135deg,
-            rgba(255, 243, 224, 0.8) 0%,
-            rgba(255, 250, 245, 0.9) 100%
-          );
-          border: 1px solid rgba(255, 255, 255, 0.04);
+          background: #ffffff;
+          border: 1px solid rgba(249, 115, 22, 0.1);
           border-radius: 20px;
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
         }
         .dash-card:hover {
-          border-color: rgba(255, 255, 255, 0.08);
+          border-color: rgba(249, 115, 22, 0.2);
           transform: translateY(-2px);
-          box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 12px 30px rgba(249, 115, 22, 0.08);
         }
 
         /* Stat card */
         .stat-card {
-          background: linear-gradient(
-            145deg,
-            rgba(255, 243, 224, 0.7) 0%,
-            rgba(255, 250, 245, 0.85) 100%
-          );
-          border: 1px solid rgba(255, 255, 255, 0.04);
+          background: #ffffff;
+          border: 1px solid rgba(249, 115, 22, 0.12);
           border-radius: 20px;
           position: relative;
           overflow: hidden;
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .stat-card::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 1px;
-          background: linear-gradient(
-            90deg,
-            transparent 0%,
-            rgba(255, 255, 255, 0.08) 50%,
-            transparent 100%
-          );
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
         }
         .stat-card:hover {
-          border-color: rgba(255, 255, 255, 0.1);
+          border-color: rgba(249, 115, 22, 0.3);
           transform: translateY(-4px);
-          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 12px 40px rgba(249, 115, 22, 0.1);
         }
 
         /* Map card */
         .map-card {
-          background: linear-gradient(
-            180deg,
-            rgba(255, 248, 240, 0.95) 0%,
-            rgba(255, 253, 250, 0.98) 100%
-          );
-          border: 1px solid rgba(255, 255, 255, 0.04);
+          background: #ffffff;
+          border: 1px solid rgba(249, 115, 22, 0.1);
           border-radius: 20px;
           overflow: hidden;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
         }
 
         /* Grid pattern */
         .grid-pattern {
           background-image: linear-gradient(
               to right,
-              rgba(255, 255, 255, 0.02) 1px,
+              rgba(249, 115, 22, 0.05) 1px,
               transparent 1px
             ),
             linear-gradient(
               to bottom,
-              rgba(255, 255, 255, 0.02) 1px,
+              rgba(249, 115, 22, 0.05) 1px,
               transparent 1px
             );
           background-size: 40px 40px;
@@ -391,7 +366,7 @@ export default function DashboardPage() {
           transition: all 0.2s ease;
         }
         .table-row:hover {
-          background: rgba(255, 255, 255, 0.02);
+          background: rgba(249, 115, 22, 0.03);
         }
 
         /* Shimmer loading */
@@ -423,7 +398,7 @@ export default function DashboardPage() {
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-orange-800/10 text-slate-300 text-[13px] font-medium hover:bg-white/[0.07] transition-all duration-200">
+            <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-orange-200 text-slate-600 text-[13px] font-medium hover:bg-orange-50 transition-all duration-200 shadow-sm">
               <Eye className="h-4 w-4" />
               Live View
             </button>
@@ -639,10 +614,10 @@ export default function DashboardPage() {
                     Coordinates
                   </span>
                 </div>
-                <p className="text-slate-300">
+                <p className="text-slate-500">
                   LAT: <span className="text-slate-900 font-semibold">32.7767</span>
                 </p>
-                <p className="text-slate-300">
+                <p className="text-slate-500">
                   LNG: <span className="text-slate-900 font-semibold">-96.7970</span>
                 </p>
               </div>
@@ -819,9 +794,9 @@ export default function DashboardPage() {
                   </p>
                 </div>
                 <div>
-                  <p className="text-[12px] text-slate-300">{flight.from}</p>
+                  <p className="text-[12px] text-slate-600">{flight.from}</p>
                   <p className="text-[11px] text-slate-500 mt-0.5 flex items-center gap-1">
-                    <ArrowUpRight className="h-3 w-3 text-slate-600" />
+                    <ArrowUpRight className="h-3 w-3 text-slate-400" />
                     {flight.to}
                   </p>
                 </div>
@@ -835,7 +810,7 @@ export default function DashboardPage() {
                 </div>
                 <div className="text-right min-w-[80px]">
                   <div className="flex items-center gap-2 justify-end">
-                    <div className="w-16 h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
+                    <div className="w-16 h-1.5 bg-slate-100 rounded-full overflow-hidden">
                       <div
                         className={`battery-bar h-full rounded-full ${
                           flight.battery > 60
@@ -849,14 +824,14 @@ export default function DashboardPage() {
                         }}
                       />
                     </div>
-                    <span className="text-[11px] font-bold text-slate-400 tabular w-8 text-right">
+                    <span className="text-[11px] font-bold text-slate-500 tabular w-8 text-right">
                       {flight.battery}%
                     </span>
                   </div>
                 </div>
                 <div className="text-right min-w-[60px]">
-                  <span className="text-[12px] font-semibold text-slate-300 tabular flex items-center gap-1 justify-end">
-                    <Clock className="h-3 w-3 text-slate-500" />
+                  <span className="text-[12px] font-semibold text-slate-600 tabular flex items-center gap-1 justify-end">
+                    <Clock className="h-3 w-3 text-slate-400" />
                     {flight.eta}
                   </span>
                 </div>
@@ -960,7 +935,7 @@ export default function DashboardPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex justify-between items-start gap-2 mb-1.5">
-                    <p className="text-[13px] font-bold text-slate-900/70 line-through decoration-white/20">
+                    <p className="text-[13px] font-bold text-slate-400 line-through decoration-slate-200">
                       GPS Drift (DR-103)
                     </p>
                     <span className="text-[9px] font-bold text-emerald-400/60 uppercase tracking-wider whitespace-nowrap">
