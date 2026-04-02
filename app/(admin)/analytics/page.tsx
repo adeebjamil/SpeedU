@@ -5,7 +5,7 @@ import { BarChart3, TrendingUp, Clock, PackageCheck } from "lucide-react";
 export default function AnalyticsPage() {
   const cards = [
     { title: "Delivery Success Rate", value: "99.8%", trend: "+0.2%", icon: PackageCheck, color: "text-emerald-600" },
-    { title: "Drone Utilization", value: "84%", trend: "+5%", icon: BarChart3, color: "text-blue-600" },
+    { title: "Drone Utilization", value: "84%", trend: "+5%", icon: BarChart3, color: "text-orange-600" },
     { title: "Avg Delivery Time", value: "7.2 min", trend: "-30s", icon: Clock, color: "text-amber-600" },
     { title: "Daily Revenue", value: "$12,450", trend: "+12%", icon: TrendingUp, color: "text-purple-600" },
   ];

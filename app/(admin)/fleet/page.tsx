@@ -39,7 +39,7 @@ export default function FleetPage() {
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
       case 'flying': return 'bg-emerald-100 text-emerald-700';
-      case 'ready': return 'bg-blue-100 text-blue-700';
+      case 'ready': return 'bg-orange-100 text-orange-700';
       case 'returning': return 'bg-amber-100 text-amber-700';
       case 'charging': return 'bg-purple-100 text-purple-700';
       case 'maintenance': return 'bg-red-100 text-red-700';
@@ -49,7 +49,7 @@ export default function FleetPage() {
 
   const getBatteryIcon = (battery: number) => {
     if (battery > 70) return <BatteryFull className="h-4 w-4 text-emerald-500" />;
-    if (battery > 30) return <BatteryMedium className="h-4 w-4 text-blue-500" />;
+    if (battery > 30) return <BatteryMedium className="h-4 w-4 text-orange-500" />;
     return <BatteryLow className="h-4 w-4 text-red-500" />;
   };
 
@@ -60,7 +60,7 @@ export default function FleetPage() {
           <h1 className="text-2xl font-bold text-slate-900">Fleet Inventory</h1>
           <p className="text-slate-500 mt-1">Manage and monitor all active and inactive drones.</p>
         </div>
-        <button className="flex items-center gap-2 bg-orange-500 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl font-medium transition-colors shadow-sm">
+        <button className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2.5 rounded-xl font-medium transition-colors shadow-sm">
           <Plus className="h-5 w-5" />
           Register Drone
         </button>
@@ -74,7 +74,7 @@ export default function FleetPage() {
           <input
             type="text"
             placeholder="Search by Drone ID or Model..."
-            className="block w-full pl-10 pr-3 py-2 border border-slate-200 rounded-xl bg-slate-50 text-sm focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 outline-none transition-all"
+            className="block w-full pl-10 pr-3 py-2 border border-slate-200 rounded-xl bg-slate-50 text-sm focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all"
           />
         </div>
         <button className="flex items-center gap-2 px-4 py-2 border border-slate-200 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">
@@ -131,7 +131,7 @@ export default function FleetPage() {
                     <td className="p-4 whitespace-nowrap text-right">
                       <Link 
                         href={`/fleet/drone-details/${drone.id}`}
-                        className="inline-flex items-center justify-center text-sm font-medium text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition-colors gap-1"
+                        className="inline-flex items-center justify-center text-sm font-medium text-orange-600 hover:text-orange-800 bg-orange-50 hover:bg-orange-100 px-3 py-1.5 rounded-lg transition-colors gap-1"
                       >
                         View
                         <ChevronRight className="h-4 w-4" />

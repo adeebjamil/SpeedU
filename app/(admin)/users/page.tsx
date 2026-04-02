@@ -38,7 +38,7 @@ export default function UsersPage() {
           <h1 className="text-2xl font-bold text-slate-900">User Management</h1>
           <p className="text-slate-500 mt-1">Manage staff roles and customer accounts.</p>
         </div>
-        <button className="flex items-center gap-2 bg-orange-500 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl font-medium transition-colors shadow-sm">
+        <button className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2.5 rounded-xl font-medium transition-colors shadow-sm">
           <UserPlus className="h-5 w-5" />
           Add User
         </button>
@@ -53,7 +53,7 @@ export default function UsersPage() {
              <input
                type="text"
                placeholder="Search by name or email..."
-               className="block w-full pl-10 pr-3 py-2 border border-slate-200 rounded-xl bg-slate-50 text-sm focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 outline-none transition-all"
+               className="block w-full pl-10 pr-3 py-2 border border-slate-200 rounded-xl bg-slate-50 text-sm focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all"
              />
            </div>
         </div>
@@ -79,7 +79,7 @@ export default function UsersPage() {
                     </td>
                     <td className="p-4 whitespace-nowrap">
                       <span className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
-                        {user.role.includes("Admin") ? <Shield className="w-4 h-4 text-blue-600" /> : <User className="w-4 h-4 text-slate-400" />}
+                        {user.role.includes("Admin") ? <Shield className="w-4 h-4 text-orange-600" /> : <User className="w-4 h-4 text-slate-400" />}
                         {user.role}
                       </span>
                     </td>

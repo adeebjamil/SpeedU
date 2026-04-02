@@ -37,7 +37,7 @@ export default function OrdersPage() {
 
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
-      case 'flying': return 'bg-blue-100 text-blue-700';
+      case 'flying': return 'bg-orange-100 text-orange-700';
       case 'packed': return 'bg-amber-100 text-amber-700';
       case 'delivered': return 'bg-emerald-100 text-emerald-700';
       case 'cancelled': return 'bg-red-100 text-red-700';
@@ -71,7 +71,7 @@ export default function OrdersPage() {
           <input
             type="text"
             placeholder="Search orders, customers..."
-            className="block w-full pl-10 pr-3 py-2 border border-slate-200 rounded-xl bg-slate-50 text-sm focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 outline-none transition-all"
+            className="block w-full pl-10 pr-3 py-2 border border-slate-200 rounded-xl bg-slate-50 text-sm focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all"
           />
         </div>
         <button className="flex items-center gap-2 px-4 py-2 border border-slate-200 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">
@@ -122,7 +122,7 @@ export default function OrdersPage() {
                       {!order.drone_id ? (
                         <span className="text-amber-600 font-medium text-sm bg-amber-50 px-2 py-1 rounded-md">Needs Assignment</span>
                       ) : (
-                        <Link href={`/fleet/drone-details/${order.drone_id}`} className="text-blue-600 hover:underline font-medium text-sm">
+                        <Link href={`/fleet/drone-details/${order.drone_id}`} className="text-orange-600 hover:underline font-medium text-sm">
                           {order.drone_id}
                         </Link>
                       )}
@@ -130,7 +130,7 @@ export default function OrdersPage() {
                     <td className="p-4 whitespace-nowrap text-right">
                       <Link 
                         href={`/orders/${order.id}`}
-                        className="inline-flex items-center justify-center text-sm font-medium text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition-colors gap-1"
+                        className="inline-flex items-center justify-center text-sm font-medium text-orange-600 hover:text-orange-800 bg-orange-50 hover:bg-orange-100 px-3 py-1.5 rounded-lg transition-colors gap-1"
                       >
                         {order.status === 'Packed' ? 'Assign' : 'Track'}
                         <ChevronRight className="h-4 w-4" />

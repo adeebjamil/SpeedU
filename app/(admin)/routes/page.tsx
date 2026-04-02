@@ -24,7 +24,7 @@ export default function RoutesPage() {
                   <span className="w-3 h-3 bg-red-500 rounded-full"></span>
                   Restricted (Stadium)
                 </div>
-                <div className="flex items-center gap-2 bg-blue-50 text-blue-700 px-3 py-1.5 rounded-lg text-sm font-medium border border-blue-100">
+                <div className="flex items-center gap-2 bg-orange-50 text-orange-700 px-3 py-1.5 rounded-lg text-sm font-medium border border-orange-100">
                   <span className="w-3 h-3 bg-orange-500 rounded-full"></span>
                   Main Corridor Alpha
                 </div>
@@ -51,7 +51,7 @@ export default function RoutesPage() {
                 </div>
               </li>
             </ul>
-            <button className="w-full mt-4 py-2 bg-slate-50 text-blue-600 font-medium rounded-lg text-sm hover:bg-blue-50 transition-colors">
+            <button className="w-full mt-4 py-2 bg-slate-50 text-orange-600 font-medium rounded-lg text-sm hover:bg-orange-50 transition-colors">
               + Add Restriction
             </button>
           </div>

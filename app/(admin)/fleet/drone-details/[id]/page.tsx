@@ -62,7 +62,7 @@ export default function DroneDetailsPage({
         <div className="lg:col-span-2 space-y-6">
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
             <h2 className="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
-              <Cpu className="h-5 w-5 text-blue-600" />
+              <Cpu className="h-5 w-5 text-amber-600" />
               Live Diagnostics
             </h2>
             
@@ -97,7 +97,7 @@ export default function DroneDetailsPage({
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm font-medium text-slate-500">Current Task</span>
-                  <Clock className="h-4 w-4 text-blue-500" />
+                  <Clock className="h-4 w-4 text-amber-600" />
                 </div>
                 <div className="text-2xl font-bold text-slate-900">{drone.assignedOrder}</div>
                 <p className="text-xs text-slate-500 mt-1">Delivery in progress</p>
@@ -107,11 +107,11 @@ export default function DroneDetailsPage({
             {/* Video/Telemetry Mock */}
             <div className="mt-8 rounded-xl overflow-hidden bg-slate-900 aspect-video relative flex items-center justify-center">
               <div className="absolute top-4 left-4 flex gap-2">
-                <span className="bg-red-500 text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded flex items-center gap-1">
+                <span className="bg-red-500 text-slate-900 text-[10px] uppercase font-bold px-2 py-0.5 rounded flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
                   Live Cam
                 </span>
-                <span className="bg-orange-950/50 backdrop-blur-sm text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded">
+                <span className="bg-orange-100/50 backdrop-blur-sm text-slate-900 text-[10px] uppercase font-bold px-2 py-0.5 rounded">
                   720p 60fps
                 </span>
               </div>
@@ -137,7 +137,7 @@ export default function DroneDetailsPage({
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
             <h2 className="text-lg font-bold text-slate-900 mb-4">Command Actions</h2>
             <div className="space-y-3">
-              <button className="w-full flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-xl font-medium transition-colors">
+              <button className="w-full flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-slate-900 py-3 rounded-xl font-medium transition-colors">
                 <PlaneTakeoff className="h-5 w-5" />
                 Pause Mission / Hover
               </button>

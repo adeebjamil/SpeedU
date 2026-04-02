@@ -66,7 +66,7 @@ export default function AdminLayout({
       {/* Admin-specific styles */}
       <style jsx global>{`
         .admin-shell {
-          background: #0f0500;
+          background: #fffcf8;
           font-family: "Inter", system-ui, -apple-system, sans-serif;
         }
 
@@ -194,7 +194,7 @@ export default function AdminLayout({
         className={clsx(
           "fixed inset-0 z-40 lg:hidden transition-all duration-300",
           sidebarOpen
-            ? "opacity-100 backdrop-blur-sm bg-orange-950/60"
+            ? "opacity-100 backdrop-blur-sm bg-white/60"
             : "opacity-0 pointer-events-none"
         )}
         onClick={() => setSidebarOpen(false)}
@@ -211,7 +211,7 @@ export default function AdminLayout({
         <div className="h-[72px] flex items-center px-6 relative">
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-500/20">
-              <PlaneTakeoff className="h-5 w-5 text-white" />
+              <PlaneTakeoff className="h-5 w-5 text-orange-50" />
             </div>
             <div className="flex flex-col">
               <span className="text-[17px] font-bold tracking-tight logo-shimmer">
@@ -224,7 +224,7 @@ export default function AdminLayout({
           </div>
           <button
             onClick={() => setSidebarOpen(false)}
-            className="ml-auto lg:hidden text-slate-500 hover:text-white transition-colors p-1"
+            className="ml-auto lg:hidden text-slate-500 hover:text-slate-900 transition-colors p-1"
           >
             <X className="h-5 w-5" />
           </button>
@@ -234,7 +234,7 @@ export default function AdminLayout({
         <div className="mx-4 mb-2 px-4 py-3 rounded-xl bg-gradient-to-r from-orange-500/10 to-orange-500/10 border border-orange-500/10">
           <div className="flex items-center gap-2 mb-1">
             <Sparkles className="h-3 w-3 text-orange-400" />
-            <span className="text-[10px] font-bold text-orange-400/80 uppercase tracking-widest">
+            <span className="text-[10px] font-bold text-orange-800 uppercase tracking-widest">
               System Status
             </span>
           </div>
@@ -274,7 +274,7 @@ export default function AdminLayout({
                     "h-9 w-9 flex items-center justify-center rounded-lg transition-all duration-200 shrink-0",
                     isActive
                       ? "bg-orange-500/20 text-orange-400"
-                      : "bg-white/[0.03] text-slate-500 group-hover:bg-white/[0.06] group-hover:text-slate-300"
+                      : "bg-white text-slate-500 group-hover:bg-white/[0.06] group-hover:text-slate-300"
                   )}
                 >
                   <item.icon className="h-[18px] w-[18px]" />
@@ -288,7 +288,7 @@ export default function AdminLayout({
                   {item.name}
                 </span>
                 {isActive && (
-                  <ChevronRight className="h-3.5 w-3.5 ml-auto text-orange-400/60" />
+                  <ChevronRight className="h-3.5 w-3.5 ml-auto text-orange-700" />
                 )}
               </Link>
             );
@@ -296,10 +296,10 @@ export default function AdminLayout({
         </nav>
 
         {/* Bottom section */}
-        <div className="p-3 border-t border-white/[0.04]">
+        <div className="p-3 border-t border-orange-800/5">
           {/* User card */}
-          <div className="flex items-center gap-3 px-3 py-3 mb-2 rounded-xl bg-white/[0.02] border border-white/[0.04]">
-            <div className="h-9 w-9 rounded-lg bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center text-[11px] font-bold text-white shadow-inner">
+          <div className="flex items-center gap-3 px-3 py-3 mb-2 rounded-xl bg-white border border-orange-800/5">
+            <div className="h-9 w-9 rounded-lg bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center text-[11px] font-bold text-slate-900 shadow-inner">
               AD
             </div>
             <div className="flex-1 min-w-0">
@@ -330,7 +330,7 @@ export default function AdminLayout({
         <header className="h-[72px] topbar-glass flex items-center justify-between px-4 lg:px-8 sticky top-0 z-30">
           <button
             onClick={() => setSidebarOpen(true)}
-            className="lg:hidden text-slate-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5"
+            className="lg:hidden text-slate-400 hover:text-slate-900 transition-colors p-2 rounded-lg hover:bg-orange-800/5"
           >
             <Menu className="h-5 w-5" />
           </button>
@@ -347,7 +347,7 @@ export default function AdminLayout({
                 className="search-input block w-full pl-10 pr-4 py-2.5 rounded-xl text-[13px] text-slate-300 placeholder:text-slate-600 outline-none"
               />
               <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                <kbd className="px-2 py-0.5 text-[10px] font-medium text-slate-600 bg-white/[0.04] rounded border border-white/[0.06]">
+                <kbd className="px-2 py-0.5 text-[10px] font-medium text-slate-600 bg-white rounded border border-orange-800/10">
                   ⌘K
                 </kbd>
               </div>
@@ -357,7 +357,7 @@ export default function AdminLayout({
           {/* Right side */}
           <div className="flex items-center gap-3 ml-auto">
             {/* Time */}
-            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.04]">
+            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-orange-800/5">
               <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)]" />
               <span className="text-xs font-medium text-slate-400 tabular">
                 {currentTime}
@@ -365,16 +365,16 @@ export default function AdminLayout({
             </div>
 
             {/* Notifications */}
-            <button className="relative p-2.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-200">
+            <button className="relative p-2.5 text-slate-400 hover:text-slate-900 hover:bg-orange-800/5 rounded-xl transition-all duration-200">
               <Bell className="h-[18px] w-[18px]" />
-              <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-red-500 border-[1.5px] border-[#160a08] badge-pulse" />
+              <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-red-500 border-[1.5px] border-[#fffaf5] badge-pulse" />
             </button>
 
             {/* Divider */}
             <div className="hidden md:block w-px h-8 bg-white/[0.06]" />
 
             {/* Avatar */}
-            <button className="flex items-center gap-3 px-2 py-1.5 rounded-xl hover:bg-white/5 transition-all duration-200">
+            <button className="flex items-center gap-3 px-2 py-1.5 rounded-xl hover:bg-orange-800/5 transition-all duration-200">
               <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-xs font-bold text-white shadow-lg shadow-orange-500/20">
                 AD
               </div>
