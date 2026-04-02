@@ -25,7 +25,7 @@ export default function RoutesPage() {
                   Restricted (Stadium)
                 </div>
                 <div className="flex items-center gap-2 bg-blue-50 text-blue-700 px-3 py-1.5 rounded-lg text-sm font-medium border border-blue-100">
-                  <span className="w-3 h-3 bg-blue-500 rounded-full"></span>
+                  <span className="w-3 h-3 bg-orange-500 rounded-full"></span>
                   Main Corridor Alpha
                 </div>
              </div>
@@ -61,13 +61,13 @@ export default function RoutesPage() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center justify-between pb-2 border-b border-slate-100">
                 <span className="text-slate-600 flex items-center gap-2">
-                  <Navigation className="w-4 h-4 text-blue-500" /> Alpha-1
+                  <Navigation className="w-4 h-4 text-orange-500" /> Alpha-1
                 </span>
                 <span className="text-emerald-600 font-medium">Clear</span>
               </li>
               <li className="flex items-center justify-between pb-2 border-b border-slate-100">
                 <span className="text-slate-600 flex items-center gap-2">
-                  <Navigation className="w-4 h-4 text-blue-500" /> Beta-South
+                  <Navigation className="w-4 h-4 text-orange-500" /> Beta-South
                 </span>
                 <span className="text-emerald-600 font-medium">Clear</span>
               </li>

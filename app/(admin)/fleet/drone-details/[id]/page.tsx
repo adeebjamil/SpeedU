@@ -79,7 +79,7 @@ export default function DroneDetailsPage({
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm font-medium text-slate-500">Signal</span>
-                  <Radio className="h-4 w-4 text-blue-500" />
+                  <Radio className="h-4 w-4 text-orange-500" />
                 </div>
                 <div className="text-2xl font-bold text-slate-900">{drone.signalStrength}</div>
                 <p className="text-xs text-slate-500 mt-1">-42 dBm</p>
@@ -97,7 +97,7 @@ export default function DroneDetailsPage({
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm font-medium text-slate-500">Current Task</span>
-                  <Clock className="h-4 w-4 text-amber-500" />
+                  <Clock className="h-4 w-4 text-blue-500" />
                 </div>
                 <div className="text-2xl font-bold text-slate-900">{drone.assignedOrder}</div>
                 <p className="text-xs text-slate-500 mt-1">Delivery in progress</p>
@@ -111,7 +111,7 @@ export default function DroneDetailsPage({
                   <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
                   Live Cam
                 </span>
-                <span className="bg-black/50 backdrop-blur-sm text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded">
+                <span className="bg-orange-950/50 backdrop-blur-sm text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded">
                   720p 60fps
                 </span>
               </div>

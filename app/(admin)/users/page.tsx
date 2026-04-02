@@ -38,7 +38,7 @@ export default function UsersPage() {
           <h1 className="text-2xl font-bold text-slate-900">User Management</h1>
           <p className="text-slate-500 mt-1">Manage staff roles and customer accounts.</p>
         </div>
-        <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl font-medium transition-colors shadow-sm">
+        <button className="flex items-center gap-2 bg-orange-500 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl font-medium transition-colors shadow-sm">
           <UserPlus className="h-5 w-5" />
           Add User
         </button>

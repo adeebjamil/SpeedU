@@ -49,7 +49,7 @@ export default function FleetPage() {
 
   const getBatteryIcon = (battery: number) => {
     if (battery > 70) return <BatteryFull className="h-4 w-4 text-emerald-500" />;
-    if (battery > 30) return <BatteryMedium className="h-4 w-4 text-amber-500" />;
+    if (battery > 30) return <BatteryMedium className="h-4 w-4 text-blue-500" />;
     return <BatteryLow className="h-4 w-4 text-red-500" />;
   };
 
@@ -60,7 +60,7 @@ export default function FleetPage() {
           <h1 className="text-2xl font-bold text-slate-900">Fleet Inventory</h1>
           <p className="text-slate-500 mt-1">Manage and monitor all active and inactive drones.</p>
         </div>
-        <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl font-medium transition-colors shadow-sm">
+        <button className="flex items-center gap-2 bg-orange-500 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl font-medium transition-colors shadow-sm">
           <Plus className="h-5 w-5" />
           Register Drone
         </button>

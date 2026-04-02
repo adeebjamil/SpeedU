@@ -66,7 +66,7 @@ export default function AdminLayout({
       {/* Admin-specific styles */}
       <style jsx global>{`
         .admin-shell {
-          background: #05060f;
+          background: #0f0500;
           font-family: "Inter", system-ui, -apple-system, sans-serif;
         }
 
@@ -74,22 +74,22 @@ export default function AdminLayout({
         .sidebar-bg {
           background: linear-gradient(
             195deg,
-            rgba(15, 18, 35, 0.98) 0%,
-            rgba(8, 10, 22, 0.99) 50%,
-            rgba(12, 15, 30, 0.98) 100%
+            rgba(35, 18, 5, 0.98) 0%,
+            rgba(22, 10, 2, 0.99) 50%,
+            rgba(30, 12, 0, 0.98) 100%
           );
-          border-right: 1px solid rgba(255, 255, 255, 0.04);
+          border-right: 1px solid rgba(249, 115, 22, 0.08);
         }
 
         /* Active nav item glow */
         .nav-active {
           background: linear-gradient(
             135deg,
-            rgba(59, 130, 246, 0.15) 0%,
-            rgba(99, 102, 241, 0.1) 100%
+            rgba(249, 115, 22, 0.15) 0%,
+            rgba(234, 88, 12, 0.1) 100%
           );
-          border: 1px solid rgba(59, 130, 246, 0.2);
-          box-shadow: 0 0 20px rgba(59, 130, 246, 0.08),
+          border: 1px solid rgba(249, 115, 22, 0.2);
+          box-shadow: 0 0 20px rgba(249, 115, 22, 0.08),
             inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
 
@@ -105,10 +105,10 @@ export default function AdminLayout({
 
         /* Top bar glass */
         .topbar-glass {
-          background: rgba(8, 10, 22, 0.85);
+          background: rgba(22, 10, 2, 0.85);
           backdrop-filter: blur(20px) saturate(180%);
           -webkit-backdrop-filter: blur(20px) saturate(180%);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+          border-bottom: 1px solid rgba(249, 115, 22, 0.08);
         }
 
         /* Search input */
@@ -119,19 +119,19 @@ export default function AdminLayout({
         }
         .search-input:focus {
           background: rgba(255, 255, 255, 0.07);
-          border-color: rgba(59, 130, 246, 0.4);
-          box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1),
-            0 0 20px rgba(59, 130, 246, 0.05);
+          border-color: rgba(249, 115, 22, 0.4);
+          box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1),
+            0 0 20px rgba(249, 115, 22, 0.05);
         }
 
         /* Notification badge pulse */
         @keyframes badge-pulse {
           0%,
           100% {
-            box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
+            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.6);
           }
           50% {
-            box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+            box-shadow: 0 0 0 6px rgba(59, 130, 246, 0);
           }
         }
         .badge-pulse {
@@ -150,11 +150,11 @@ export default function AdminLayout({
         .logo-shimmer {
           background: linear-gradient(
             90deg,
-            #3b82f6 0%,
-            #818cf8 25%,
-            #e0e7ff 50%,
-            #818cf8 75%,
-            #3b82f6 100%
+            #f97316 0%,
+            #fdba74 25%,
+            #fff7ed 50%,
+            #fdba74 75%,
+            #f97316 100%
           );
           background-size: 200% auto;
           -webkit-background-clip: text;
@@ -167,9 +167,9 @@ export default function AdminLayout({
         .content-area {
           background: linear-gradient(
             180deg,
-            #070a14 0%,
-            #0a0d1a 40%,
-            #080b17 100%
+            #140a07 0%,
+            #1a0d0a 40%,
+            #170b08 100%
           );
         }
 
@@ -194,7 +194,7 @@ export default function AdminLayout({
         className={clsx(
           "fixed inset-0 z-40 lg:hidden transition-all duration-300",
           sidebarOpen
-            ? "opacity-100 backdrop-blur-sm bg-black/60"
+            ? "opacity-100 backdrop-blur-sm bg-orange-950/60"
             : "opacity-0 pointer-events-none"
         )}
         onClick={() => setSidebarOpen(false)}
@@ -210,7 +210,7 @@ export default function AdminLayout({
         {/* Logo */}
         <div className="h-[72px] flex items-center px-6 relative">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-500/20">
               <PlaneTakeoff className="h-5 w-5 text-white" />
             </div>
             <div className="flex flex-col">
@@ -231,10 +231,10 @@ export default function AdminLayout({
         </div>
 
         {/* Quick Status */}
-        <div className="mx-4 mb-2 px-4 py-3 rounded-xl bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/10">
+        <div className="mx-4 mb-2 px-4 py-3 rounded-xl bg-gradient-to-r from-orange-500/10 to-orange-500/10 border border-orange-500/10">
           <div className="flex items-center gap-2 mb-1">
-            <Sparkles className="h-3 w-3 text-blue-400" />
-            <span className="text-[10px] font-bold text-blue-400/80 uppercase tracking-widest">
+            <Sparkles className="h-3 w-3 text-orange-400" />
+            <span className="text-[10px] font-bold text-orange-400/80 uppercase tracking-widest">
               System Status
             </span>
           </div>
@@ -263,17 +263,17 @@ export default function AdminLayout({
                 onClick={() => setSidebarOpen(false)}
                 className={clsx(
                   "nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 relative group",
-                  isActive ? "nav-active text-blue-300" : "text-slate-400"
+                  isActive ? "nav-active text-orange-400" : "text-slate-400"
                 )}
               >
                 {/* Active indicator bar */}
-                <div className="nav-indicator absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 bg-gradient-to-b from-blue-400 to-indigo-500 rounded-r-full opacity-0 scale-y-0 transition-all duration-300" />
+                <div className="nav-indicator absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 bg-gradient-to-b from-orange-400 to-orange-600 rounded-r-full opacity-0 scale-y-0 transition-all duration-300" />
 
                 <div
                   className={clsx(
                     "h-9 w-9 flex items-center justify-center rounded-lg transition-all duration-200 shrink-0",
                     isActive
-                      ? "bg-blue-500/20 text-blue-400"
+                      ? "bg-orange-500/20 text-orange-400"
                       : "bg-white/[0.03] text-slate-500 group-hover:bg-white/[0.06] group-hover:text-slate-300"
                   )}
                 >
@@ -288,7 +288,7 @@ export default function AdminLayout({
                   {item.name}
                 </span>
                 {isActive && (
-                  <ChevronRight className="h-3.5 w-3.5 ml-auto text-blue-400/60" />
+                  <ChevronRight className="h-3.5 w-3.5 ml-auto text-orange-400/60" />
                 )}
               </Link>
             );
@@ -367,7 +367,7 @@ export default function AdminLayout({
             {/* Notifications */}
             <button className="relative p-2.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-200">
               <Bell className="h-[18px] w-[18px]" />
-              <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-red-500 border-[1.5px] border-[#080a16] badge-pulse" />
+              <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-red-500 border-[1.5px] border-[#160a08] badge-pulse" />
             </button>
 
             {/* Divider */}
@@ -375,7 +375,7 @@ export default function AdminLayout({
 
             {/* Avatar */}
             <button className="flex items-center gap-3 px-2 py-1.5 rounded-xl hover:bg-white/5 transition-all duration-200">
-              <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-xs font-bold text-white shadow-lg shadow-blue-500/20">
+              <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-xs font-bold text-white shadow-lg shadow-orange-500/20">
                 AD
               </div>
               <div className="hidden md:flex flex-col items-start">

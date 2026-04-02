@@ -85,9 +85,9 @@ const stats = [
     change: "+3",
     trend: "up" as const,
     icon: PlaneTakeoff,
-    gradient: "from-blue-500 to-indigo-600",
-    glowColor: "rgba(59,130,246,0.3)",
-    bgGlow: "rgba(59,130,246,0.08)",
+    gradient: "from-orange-500 to-orange-600",
+    glowColor: "rgba(249,115,22,0.3)",
+    bgGlow: "rgba(249,115,22,0.08)",
   },
   {
     label: "Flights In Progress",
@@ -105,9 +105,9 @@ const stats = [
     change: "-5",
     trend: "down" as const,
     icon: Package,
-    gradient: "from-amber-400 to-orange-500",
-    glowColor: "rgba(251,191,36,0.3)",
-    bgGlow: "rgba(251,191,36,0.08)",
+    gradient: "from-blue-400 to-blue-500",
+    glowColor: "rgba(96,165,250,0.3)",
+    bgGlow: "rgba(96,165,250,0.08)",
   },
   {
     label: "Grounded Drones",
@@ -144,9 +144,9 @@ const recentFlights = [
     eta: "6 min",
     battery: 45,
     speed: "38 km/h",
-    statusColor: "text-blue-400",
-    statusBg: "bg-blue-400/10",
-    statusBorder: "border-blue-400/20",
+    statusColor: "text-orange-400",
+    statusBg: "bg-orange-400/10",
+    statusBorder: "border-orange-400/20",
   },
   {
     id: "FL-2845",
@@ -157,9 +157,9 @@ const recentFlights = [
     eta: "2 min",
     battery: 22,
     speed: "35 km/h",
-    statusColor: "text-amber-400",
-    statusBg: "bg-amber-400/10",
-    statusBorder: "border-amber-400/20",
+    statusColor: "text-orange-400",
+    statusBg: "bg-orange-400/10",
+    statusBorder: "border-orange-400/20",
   },
   {
     id: "FL-2844",
@@ -200,8 +200,8 @@ export default function DashboardPage() {
         .dash-card {
           background: linear-gradient(
             135deg,
-            rgba(15, 20, 40, 0.8) 0%,
-            rgba(10, 14, 30, 0.9) 100%
+            rgba(40, 20, 10, 0.8) 0%,
+            rgba(30, 14, 5, 0.9) 100%
           );
           border: 1px solid rgba(255, 255, 255, 0.04);
           border-radius: 20px;
@@ -219,8 +219,8 @@ export default function DashboardPage() {
         .stat-card {
           background: linear-gradient(
             145deg,
-            rgba(15, 20, 40, 0.7) 0%,
-            rgba(10, 14, 30, 0.85) 100%
+            rgba(40, 20, 10, 0.7) 0%,
+            rgba(30, 14, 5, 0.85) 100%
           );
           border: 1px solid rgba(255, 255, 255, 0.04);
           border-radius: 20px;
@@ -252,8 +252,8 @@ export default function DashboardPage() {
         .map-card {
           background: linear-gradient(
             180deg,
-            rgba(8, 12, 28, 0.95) 0%,
-            rgba(5, 8, 20, 0.98) 100%
+            rgba(28, 12, 5, 0.95) 0%,
+            rgba(20, 8, 2, 0.98) 100%
           );
           border: 1px solid rgba(255, 255, 255, 0.04);
           border-radius: 20px;
@@ -410,8 +410,8 @@ export default function DashboardPage() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <div className="h-1.5 w-8 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600" />
-              <span className="text-[11px] font-bold text-blue-400/70 uppercase tracking-[0.2em]">
+              <div className="h-1.5 w-8 rounded-full bg-gradient-to-r from-orange-500 to-orange-600" />
+              <span className="text-[11px] font-bold text-orange-400/70 uppercase tracking-[0.2em]">
                 Command Center
               </span>
             </div>
@@ -427,7 +427,7 @@ export default function DashboardPage() {
               <Eye className="h-4 w-4" />
               Live View
             </button>
-            <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[13px] font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-200 hover:-translate-y-0.5">
+            <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 text-white text-[13px] font-semibold hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-200 hover:-translate-y-0.5">
               <BarChart3 className="h-4 w-4" />
               Generate Report
             </button>
@@ -503,8 +503,8 @@ export default function DashboardPage() {
           {/* Map Header */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-6 pb-4 gap-4">
             <div className="flex items-center gap-3">
-              <div className="h-11 w-11 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-xl flex items-center justify-center border border-blue-500/20 shadow-inner">
-                <LocateFixed className="h-5 w-5 text-blue-400" />
+              <div className="h-11 w-11 bg-gradient-to-br from-orange-500/20 to-orange-500/20 rounded-xl flex items-center justify-center border border-orange-500/20 shadow-inner">
+                <LocateFixed className="h-5 w-5 text-orange-400" />
               </div>
               <div>
                 <h2 className="text-lg font-bold text-white tracking-tight">
@@ -524,8 +524,8 @@ export default function DashboardPage() {
                 Active (12)
               </span>
               <div className="w-px h-4 bg-white/10 self-center" />
-              <span className="flex items-center text-[11px] font-bold text-amber-400 tracking-wider uppercase">
-                <span className="w-2 h-2 rounded-full bg-amber-400 mr-2 shadow-[0_0_8px_rgba(251,191,36,0.6)]" />
+              <span className="flex items-center text-[11px] font-bold text-orange-400 tracking-wider uppercase">
+                <span className="w-2 h-2 rounded-full bg-orange-400 mr-2 shadow-[0_0_8px_rgba(96,165,250,0.6)]" />
                 Returning (3)
               </span>
               <div className="w-px h-4 bg-white/10 self-center" />
@@ -537,20 +537,20 @@ export default function DashboardPage() {
           </div>
 
           {/* Map Area */}
-          <div className="flex-1 mx-3 mb-3 bg-[#060a18] rounded-2xl border border-white/[0.03] relative overflow-hidden">
+          <div className="flex-1 mx-3 mb-3 bg-[#180a06] rounded-2xl border border-white/[0.03] relative overflow-hidden">
             {/* Grid pattern */}
             <div className="absolute inset-0 grid-pattern" />
 
             {/* Scan line */}
             <div className="absolute inset-x-0 top-0 h-full overflow-hidden pointer-events-none">
-              <div className="grid-scan-line absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
+              <div className="grid-scan-line absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-orange-500/30 to-transparent" />
             </div>
 
             {/* Radar rings */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <div className="w-[200px] h-[200px] rounded-full border border-blue-500/[0.06] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-              <div className="w-[350px] h-[350px] rounded-full border border-blue-500/[0.04] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-              <div className="w-[500px] h-[500px] rounded-full border border-blue-500/[0.03] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+              <div className="w-[200px] h-[200px] rounded-full border border-orange-500/[0.06] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+              <div className="w-[350px] h-[350px] rounded-full border border-orange-500/[0.04] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+              <div className="w-[500px] h-[500px] rounded-full border border-orange-500/[0.03] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
 
               {/* Radar sweep */}
               <div className="w-[500px] h-[500px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 radar-sweep">
@@ -558,7 +558,7 @@ export default function DashboardPage() {
                   className="absolute top-0 left-1/2 w-1/2 h-1/2 origin-bottom-left"
                   style={{
                     background:
-                      "conic-gradient(from 0deg, rgba(59,130,246,0.12), transparent 60deg)",
+                      "conic-gradient(from 0deg, rgba(249,115,22,0.12), transparent 60deg)",
                   }}
                 />
               </div>
@@ -567,14 +567,14 @@ export default function DashboardPage() {
             {/* Hub Center */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
               <div className="relative">
-                <div className="w-4 h-4 rounded-full bg-blue-500 pulse-ring absolute -inset-2" />
-                <div className="w-4 h-4 rounded-full bg-blue-500 pulse-ring-delay absolute -inset-2" />
-                <div className="w-4 h-4 rounded-full bg-blue-500 pulse-ring-delay-2 absolute -inset-2" />
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.6)] relative z-10">
+                <div className="w-4 h-4 rounded-full bg-orange-500 pulse-ring absolute -inset-2" />
+                <div className="w-4 h-4 rounded-full bg-orange-500 pulse-ring-delay absolute -inset-2" />
+                <div className="w-4 h-4 rounded-full bg-orange-500 pulse-ring-delay-2 absolute -inset-2" />
+                <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(249,115,22,0.6)] relative z-10">
                   <div className="w-2.5 h-2.5 bg-white rounded-full" />
                 </div>
               </div>
-              <span className="absolute top-12 left-1/2 -translate-x-1/2 text-[9px] font-bold text-blue-400/80 uppercase tracking-[0.3em] whitespace-nowrap">
+              <span className="absolute top-12 left-1/2 -translate-x-1/2 text-[9px] font-bold text-orange-400/80 uppercase tracking-[0.3em] whitespace-nowrap">
                 HQ Hub
               </span>
             </div>
@@ -588,7 +588,7 @@ export default function DashboardPage() {
                 {/* Trail */}
                 <div className="absolute top-1/2 left-full ml-1 w-24 h-[1px] bg-gradient-to-r from-emerald-400/50 to-transparent -translate-y-1/2 rotate-[-30deg] origin-left pointer-events-none" />
               </div>
-              <div className="absolute -top-16 left-1/2 -translate-x-1/2 bg-[#0c1025] border border-white/10 text-white text-[11px] px-4 py-2.5 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap z-30 shadow-2xl shadow-black/50 group-hover:-translate-y-1">
+              <div className="absolute -top-16 left-1/2 -translate-x-1/2 bg-[#25100c] border border-white/10 text-white text-[11px] px-4 py-2.5 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap z-30 shadow-2xl shadow-black/50 group-hover:-translate-y-1">
                 <p className="font-bold text-emerald-400 flex items-center gap-1.5 mb-1">
                   <PlaneTakeoff className="w-3 h-3" /> DR-101
                 </p>
@@ -601,13 +601,13 @@ export default function DashboardPage() {
             {/* Drone 2 - Returning */}
             <div className="absolute bottom-[28%] right-[22%] z-20 group cursor-pointer drone-float-delay">
               <div className="relative">
-                <div className="w-4 h-4 bg-amber-400 rounded-full shadow-[0_0_16px_rgba(251,191,36,0.8)] flex items-center justify-center">
+                <div className="w-4 h-4 bg-orange-400 rounded-full shadow-[0_0_16px_rgba(96,165,250,0.8)] flex items-center justify-center">
                   <div className="w-1.5 h-1.5 bg-white rounded-full" />
                 </div>
-                <div className="absolute top-1/2 right-full mr-1 w-16 h-[1px] bg-gradient-to-l from-amber-400/50 to-transparent -translate-y-1/2 rotate-[20deg] origin-right pointer-events-none" />
+                <div className="absolute top-1/2 right-full mr-1 w-16 h-[1px] bg-gradient-to-l from-blue-400/50 to-transparent -translate-y-1/2 rotate-[20deg] origin-right pointer-events-none" />
               </div>
-              <div className="absolute -top-16 left-1/2 -translate-x-1/2 bg-[#0c1025] border border-white/10 text-white text-[11px] px-4 py-2.5 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap z-30 shadow-2xl shadow-black/50 group-hover:-translate-y-1">
-                <p className="font-bold text-amber-400 flex items-center gap-1.5 mb-1">
+              <div className="absolute -top-16 left-1/2 -translate-x-1/2 bg-[#25100c] border border-white/10 text-white text-[11px] px-4 py-2.5 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap z-30 shadow-2xl shadow-black/50 group-hover:-translate-y-1">
+                <p className="font-bold text-orange-400 flex items-center gap-1.5 mb-1">
                   <PlaneTakeoff className="w-3 h-3" /> DR-102
                 </p>
                 <p className="text-[10px] text-slate-400">
@@ -632,10 +632,10 @@ export default function DashboardPage() {
 
             {/* Overlay - Coords */}
             <div className="absolute top-4 left-4 flex flex-col gap-2 z-20">
-              <div className="bg-[#080c1e]/80 backdrop-blur-md border border-white/[0.06] px-3.5 py-2.5 rounded-xl text-white font-mono text-[11px] shadow-lg">
+              <div className="bg-[#1e0c08]/80 backdrop-blur-md border border-white/[0.06] px-3.5 py-2.5 rounded-xl text-white font-mono text-[11px] shadow-lg">
                 <div className="flex items-center gap-2 mb-1.5">
-                  <MapPin className="h-3 w-3 text-blue-400" />
-                  <span className="text-[9px] font-bold text-blue-400/70 uppercase tracking-wider">
+                  <MapPin className="h-3 w-3 text-orange-400" />
+                  <span className="text-[9px] font-bold text-orange-400/70 uppercase tracking-wider">
                     Coordinates
                   </span>
                 </div>
@@ -650,7 +650,7 @@ export default function DashboardPage() {
 
             {/* Overlay - Zone indicator */}
             <div className="absolute bottom-4 right-4 z-20">
-              <div className="bg-[#080c1e]/80 backdrop-blur-md border border-white/[0.06] px-3.5 py-2.5 rounded-xl text-[11px] shadow-lg">
+              <div className="bg-[#1e0c08]/80 backdrop-blur-md border border-white/[0.06] px-3.5 py-2.5 rounded-xl text-[11px] shadow-lg">
                 <p className="text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1">
                   Airspace
                 </p>
@@ -712,9 +712,9 @@ export default function DashboardPage() {
               </span>
             </div>
             <div className="space-y-3">
-              <div className="flex items-center justify-between p-4 rounded-2xl bg-white/[0.02] border border-white/[0.04] hover:border-blue-500/20 transition-all duration-300 group">
+              <div className="flex items-center justify-between p-4 rounded-2xl bg-white/[0.02] border border-white/[0.04] hover:border-orange-500/20 transition-all duration-300 group">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 bg-blue-500/10 rounded-xl text-blue-400 border border-blue-500/20 group-hover:shadow-[0_0_12px_rgba(59,130,246,0.15)] transition-shadow duration-300">
+                  <div className="p-2.5 bg-orange-500/10 rounded-xl text-orange-400 border border-orange-500/20 group-hover:shadow-[0_0_12px_rgba(249,115,22,0.15)] transition-shadow duration-300">
                     <Wind className="h-5 w-5" />
                   </div>
                   <div>
@@ -775,8 +775,8 @@ export default function DashboardPage() {
         <div className="xl:col-span-2 dash-card overflow-hidden stagger-5">
           <div className="flex items-center justify-between p-6 pb-4">
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 bg-gradient-to-br from-blue-500/15 to-indigo-500/15 rounded-xl flex items-center justify-center border border-blue-500/15">
-                <Route className="h-5 w-5 text-blue-400" />
+              <div className="h-10 w-10 bg-gradient-to-br from-orange-500/15 to-orange-500/15 rounded-xl flex items-center justify-center border border-orange-500/15">
+                <Route className="h-5 w-5 text-orange-400" />
               </div>
               <div>
                 <h2 className="text-[15px] font-bold text-white">
@@ -787,7 +787,7 @@ export default function DashboardPage() {
                 </p>
               </div>
             </div>
-            <button className="flex items-center gap-1.5 text-[12px] font-semibold text-blue-400 hover:text-blue-300 transition-colors">
+            <button className="flex items-center gap-1.5 text-[12px] font-semibold text-orange-400 hover:text-orange-300 transition-colors">
               View All
               <ArrowUpRight className="h-3.5 w-3.5" />
             </button>
@@ -829,7 +829,7 @@ export default function DashboardPage() {
                   <span
                     className={`inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-full ${flight.statusBg} ${flight.statusColor} border ${flight.statusBorder}`}
                   >
-                    <span className={`w-1.5 h-1.5 rounded-full ${flight.statusColor === "text-emerald-400" ? "bg-emerald-400" : flight.statusColor === "text-blue-400" ? "bg-blue-400" : "bg-amber-400"}`} />
+                    <span className={`w-1.5 h-1.5 rounded-full ${flight.statusColor === "text-emerald-400" ? "bg-emerald-400" : flight.statusColor === "text-orange-400" ? "bg-orange-400" : "bg-orange-400"}`} />
                     {flight.status}
                   </span>
                 </div>
@@ -841,7 +841,7 @@ export default function DashboardPage() {
                           flight.battery > 60
                             ? "bg-emerald-400"
                             : flight.battery > 30
-                            ? "bg-amber-400"
+                            ? "bg-orange-400"
                             : "bg-rose-400"
                         }`}
                         style={{
@@ -887,17 +887,17 @@ export default function DashboardPage() {
 
           <div className="space-y-3">
             {/* Alert 1 */}
-            <div className="group p-4 rounded-2xl bg-amber-400/[0.04] border border-amber-400/10 hover:border-amber-400/25 cursor-pointer transition-all duration-300">
+            <div className="group p-4 rounded-2xl bg-orange-400/[0.04] border border-orange-400/10 hover:border-orange-400/25 cursor-pointer transition-all duration-300">
               <div className="flex items-start gap-3">
-                <div className="p-2 bg-amber-400/10 rounded-lg text-amber-400 border border-amber-400/20 shrink-0 mt-0.5 group-hover:shadow-[0_0_12px_rgba(251,191,36,0.15)] transition-shadow duration-300">
+                <div className="p-2 bg-orange-400/10 rounded-lg text-orange-400 border border-orange-400/20 shrink-0 mt-0.5 group-hover:shadow-[0_0_12px_rgba(96,165,250,0.15)] transition-shadow duration-300">
                   <BatteryWarning className="h-4 w-4" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex justify-between items-start gap-2 mb-1.5">
-                    <p className="text-[13px] font-bold text-white group-hover:text-amber-300 transition-colors">
+                    <p className="text-[13px] font-bold text-white group-hover:text-orange-300 transition-colors">
                       Low Battery (DR-107)
                     </p>
-                    <span className="text-[9px] font-bold text-amber-400/70 uppercase tracking-wider whitespace-nowrap">
+                    <span className="text-[9px] font-bold text-orange-400/70 uppercase tracking-wider whitespace-nowrap">
                       Just now
                     </span>
                   </div>
@@ -907,11 +907,11 @@ export default function DashboardPage() {
                   </p>
                   <div className="flex items-center gap-3 mt-3">
                     <div className="flex items-center gap-1.5 text-[10px] font-semibold text-slate-500">
-                      <Battery className="h-3 w-3 text-amber-400" />
+                      <Battery className="h-3 w-3 text-orange-400" />
                       <span>15%</span>
                     </div>
                     <div className="flex items-center gap-1.5 text-[10px] font-semibold text-slate-500">
-                      <MapPin className="h-3 w-3 text-amber-400" />
+                      <MapPin className="h-3 w-3 text-orange-400" />
                       <span>Sector 4</span>
                     </div>
                   </div>

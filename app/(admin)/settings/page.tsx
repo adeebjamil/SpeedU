@@ -52,7 +52,7 @@ export default function SettingsPage() {
         </section>
 
         <div className="flex justify-end">
-          <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-xl font-medium transition-colors shadow-sm">
+          <button className="flex items-center gap-2 bg-orange-500 hover:bg-blue-700 text-white px-6 py-2.5 rounded-xl font-medium transition-colors shadow-sm">
             <Save className="h-5 w-5" />
             Save Changes
           </button>

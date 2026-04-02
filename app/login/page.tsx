@@ -35,18 +35,13 @@ export default function LoginPage() {
       });
 
       if (authError) {
-        if (
-          (email === "ezviz01@gmail.com" && password === "ezviz@password") ||
-          (email === "adeebjamil6459@gmail.com" && password === "Adeebjamil@123")
-        ) {
-          router.push("/dashboard");
-          return;
-        }
-        throw authError;
-      };
+        throw authError; // Removed hardcoded bypass for security
+      }
       
       if (data?.user) {
+        // Just let it push, the middleware will catch it
         router.push("/dashboard");
+        router.refresh();
       }
     } catch (err: any) {
       setError(err.message || "Invalid credentials. Please try again.");
